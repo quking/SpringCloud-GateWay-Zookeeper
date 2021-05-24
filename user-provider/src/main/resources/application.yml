@@ -1,0 +1,17 @@
+dubbo:
+  application:
+    name: dubbo-provider
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    protocol: zookeeper
+  scan:
+    base-packages: com.king.service
+spring:
+  application:
+    name: dubbo-provider
+
+server:
+  port: 8848

@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: payment_route
+          uri: http://localhost:8001
+          predicates:
+              - Path=/get/**
+    zookeeper:
+      connect-string: 127.0.0.1:2181
+      discovery:
+        enabled: true
+        register: true
+        root: /scz
+  pid:
+    file: scz_log/geteway.pid
+
+logging:
+  file: scz_log/gateway.log
+  level:
+    com:
+      sytd:
+        zookeeper: debug
+    root: info
